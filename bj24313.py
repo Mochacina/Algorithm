@@ -1,0 +1,5 @@
+# a,b=map(int,input().split())
+# c=int(input())
+# n=int(input())
+a,b,c,n=map(int,open(0).read().split())
+print(0 if(c*n<a*n+b or c*100<a*100+b)else 1)
