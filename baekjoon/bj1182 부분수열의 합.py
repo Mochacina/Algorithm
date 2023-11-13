@@ -24,19 +24,33 @@
 #         for j in range(n):
 
 
-def solve(idx, SUM):
-    print(idx, SUM)
-    global ans
-    if idx >= N:
-        return
-    SUM += nums[idx]
-    if SUM == S:
-        ans += 1
-    solve(idx + 1, SUM - nums[idx])
-    solve(idx + 1, SUM)
+# def solve(idx, SUM):
+#     print(idx, SUM)
+#     global ans
+#     if idx >= N:
+#         return
+#     SUM += nums[idx]
+#     if SUM == S:
+#         ans += 1
+#     solve(idx + 1, SUM - nums[idx])
+#     solve(idx + 1, SUM)
 
-N, S = map(int, input().split())
-nums = list(map(int, input().split()))
-ans = 0
-solve(0, 0)
-print(ans)
+# N, S = map(int, input().split())
+# nums = list(map(int, input().split()))
+# ans = 0
+# solve(0, 0)
+# print(ans)
+
+def backtrack(a,b):
+    global cnt
+    if a >= n: return
+    b += l[a]
+    if b == s: cnt+=1
+    backtrack(a+1, b)
+    backtrack(a+1, b-l[a])
+
+n, s = map(int,input().split())
+l = list(map(int,input().split()))
+cnt = 0
+backtrack(0,0)
+print(cnt)
