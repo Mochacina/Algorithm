@@ -1,0 +1,1 @@
+while n:=int(input()):print(min([input()for _ in[0]*n],key=str.lower))
