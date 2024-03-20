@@ -1,7 +1,7 @@
 N,M = map(int,input().split())
 L = [[*map(int,input().split())] for _ in range(N)]
 M = [[*map(int,input().split())] for _ in range(M)]
-d = [[-1,0],[-1,-1],[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1]]
+d = [[-1,0],[-1,-1],[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1]] # x y
 for i in M:
     a,b=i
     a-=1
