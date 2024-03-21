@@ -25,6 +25,7 @@ def z(N,r,c,n=0):
     return z(N-1,r%half,c%half,n+half**2*mul)
 print(z(N,r,c))
 
+# short codding for Z-order
 # n,r,c=map(int,input().split());
 # print(int(f'{c:b}'))
 # print(int(f'{r:b}'))
