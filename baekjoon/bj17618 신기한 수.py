@@ -1,0 +1,1 @@
+print(sum([1 for i in range(1,int(input())+1)if i%sum(map(int, str(i)))==0]))
