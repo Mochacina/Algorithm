@@ -2,59 +2,97 @@ from collections import deque
 
 r,c = map(int, input().split())
 board = [list(input()) for _ in range(r)]
-visited = [[-1]*c for _ in range(r)]
-node_l, node_r = [], []
-ice_l, ice_r = [], []
+visited = [[0]*c for _ in range(r)]
+swan_l = []
+water = deque()
 days = 0
+di = [(1,0),(-1,0),(0,1),(0,-1)]
 
 for i in range(r):
     for j in range(c):
-        if board[i][j] == 'L' and not node_l:
-            node_l.append((i,j))
-            board[i][j] = '.'
-        else:
-            node_r.append((i,j))
-            board[i][j] = '.'
+        if board[i][j] == 'L':
+            swan_l.append((i,j))
+        if board[i][j] in ['.', 'L']:
+            water.append((i,j))
             
-def dfs(nodes, n):
-    q = deque(nodes)
+def find_swan(q):
+    swan_next = deque()
     while q:
         x,y = q.popleft()
-        if visited[x][y] == -1: visited[x][y] = days*2+n
-        for dx,dy in (1,0),(-1,0),(0,1),(0,-1):
+        if (x,y) == swan_l[1]: return False
+        for dx,dy in di:
             nx,ny = x+dx,y+dy
-            if 0 <= nx < r and 0 <= ny < c and visited[nx][ny] == -1:
-                if board[nx][ny] == '.' and visited[nx][ny] == -1:
-                    visited[nx][ny] = days*2+n
-                    q.appendleft((nx,ny))
-                elif board[nx][ny] == '.' and visited[nx][ny]%2+1 == n:
-                    return True
-                elif board[nx][ny] == 'X':
-                    if n == 0: ice_l.append((nx,ny))
-                    else: ice_r.append((nx,ny))
-    return 0
+            if 0 <= nx < r and 0 <= ny < c and not visited[nx][ny]:
+                if board[nx][ny] == 'X':
+                    swan_next.append((nx,ny))
+                else: q.append((nx,ny))
+                visited[nx][ny] = 1
+    return swan_next
+            
+def melt(q):
+    water_next = deque()
+    while q:
+        x,y = q.popleft()
+        for dx,dy in di:
+            nx,ny = x+dx,y+dy
+            if 0 <= nx < r and 0 <= ny < c:
+                if board[nx][ny] == 'X':
+                    board[nx][ny] = '.'
+                    water_next.append((nx,ny))
+    return water_next
 
-dfs(node_l, 0)
-dfs(node_r, 1)
-for i in board:
-    print(*i)
-for i in visited:
-    print(*i)
+swan = deque([(swan_l[0])])
+while 1:
+    if not (swan:=find_swan(swan)):break
+    water = melt(water)
+    days+=1
+print(days)
+
+# for i in range(r):
+#     for j in range(c):
+#         if board[i][j] == 'L' and not node_l:
+#             node_l.append((i,j))
+#             visited[i][j] = 0
+#             board[i][j] = '.'
+#         elif board[i][j] == 'L' and not node_r:
+#             node_r.append((i,j))
+#             visited[i][j] = 1
+#             board[i][j] = '.'
+            
+# def dfs(nodes, n):
+#     q = deque(nodes)
+#     while q:
+#         x,y = q.popleft()
+#         if visited[x][y] == -1: visited[x][y] = n
+#         for dx,dy in (1,0),(-1,0),(0,1),(0,-1):
+#             nx,ny = x+dx,y+dy
+#             if 0 <= nx < r and 0 <= ny < c:
+#                 if board[nx][ny] == '.' and visited[nx][ny] == -1:
+#                     visited[nx][ny] = n
+#                     q.appendleft((nx,ny))
+#                 elif board[nx][ny] == '.' and (visited[nx][ny]+1)%2 == n:
+#                     return True
+#                 elif board[nx][ny] == 'X':
+#                     if n == 0: ice_l.append((nx,ny))
+#                     else: ice_r.append((nx,ny))
+#     return False
 
 # while days < 10:
 #     if dfs(node_l, 0): break
 #     if dfs(node_r, 1): break
 #     days += 1
+#     # print(days)
+#     # for i in board:
+#     #     print(*i)
+#     # for i in visited:
+#     #     print(*i)
 #     for x,y in ice_l:board[x][y] = '.'
 #     for x,y in ice_r:board[x][y] = '.'
 #     node_l = ice_l
 #     node_r = ice_r
 #     ice_l = []
 #     ice_r = []
-#     print(days)
-#     for i in board:
-#         print(*i)
-#     print(visited)
+    
     
 # print(days)
 
