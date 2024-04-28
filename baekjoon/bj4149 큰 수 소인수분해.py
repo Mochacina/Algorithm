@@ -6,8 +6,7 @@ def gcd(a, b):
     return a
 
 def pollards_rho(n):
-    if n % 2 == 0:
-        return 2
+    if n % 2 == 0: return 2
     x = random.randrange(2, n)
     y = x
     c = random.randrange(1, n)
@@ -22,12 +21,9 @@ def pollards_rho(n):
     return d
 
 def is_prime(n, accuracy=5):
-    if n < 2:
-        return False
-    if n in (2, 3):
-        return True
-    if n % 2 == 0 or n % 3 == 0:
-        return False
+    if n < 2: return 0
+    if n in (2, 3): return 1
+    if n % 2 == 0 or n % 3 == 0: return 0
     r, d = 0, n - 1
     while d % 2 == 0:
         r += 1
