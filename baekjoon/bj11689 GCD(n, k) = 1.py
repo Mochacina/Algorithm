@@ -7,10 +7,9 @@ def euler_phi(n):
             while n % p == 0:
                 n //= p
             result -= result // p
-        p += 1 
+        p += 1
 
-    if n > 1:
-        result -= result // n
+    if n > 1: result -= result // n
 
     return result
 
