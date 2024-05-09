@@ -4,7 +4,7 @@
 
 from collections import deque
 
-n, k = map(int, input().split())
+n,k = map(int, input().split())
 l = [[0]*n for _ in range(n)]
 civ_node = deque([])
 civ_cnt = k
@@ -24,7 +24,7 @@ def bfs(q):
         for dx,dy in di:
             nx,ny = x+dx,y+dy
             if 0 <= nx < n and 0 <= ny < n:
-                if l[nx][ny] == 0:
+                if not l[nx][ny]:
                     l[nx][ny] = civ
                     q_next.append((nx,ny))
     return q_next
@@ -54,8 +54,6 @@ def u(a,b):
         else:
             parent[rootA] = rootB
         civ_cnt -= 1
-        return 1
-    return 0
 
 while 1:
     civ_combine(civ_node)
