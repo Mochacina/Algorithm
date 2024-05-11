@@ -8,10 +8,8 @@ def is_possible(y, x, n):
             return 0
         if arr[i][x] == n:
             return 0
-
     ny = (y // 3) * 3
     nx = (x // 3) * 3
-
     for dy in range(3):
         for dx in range(3):
             if arr[ny + dy][nx + dx] == n:
