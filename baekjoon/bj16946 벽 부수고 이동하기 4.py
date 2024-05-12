@@ -58,7 +58,7 @@ def dfs(x, y):
                 cnt_q.append((nx,ny))
                 v[nx][ny] = region_id
                 cnt += 1
-    for x,y in cnt_q: c[x][y] = cnt
+    for x,y in cnt_q:c[x][y] = cnt
 
 for i in range(n):
     for j in range(m):
