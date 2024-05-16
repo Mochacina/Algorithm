@@ -14,3 +14,8 @@ for i in range(5):
     l += [i]
 
 print(l)
+
+l = []
+l += "hello"
+
+print(l)
