@@ -21,7 +21,6 @@ for i in range(1, n+1):
 
 while q:
     node = q.popleft()
-    
     for i in g[node]:
         d[i] -= 1
         time[i] = max(time[node]+t[i], time[i])
