@@ -8,3 +8,9 @@ print(di)
 
 l = [1]
 print(l[:-1])
+
+l = []
+for i in range(5):
+    l += [i]
+
+print(l)
