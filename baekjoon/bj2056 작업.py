@@ -1,4 +1,5 @@
 from collections import deque
+
 n = int(input())
 g = [[] for _ in range(n+1)]
 d = [0]*(n+1)
