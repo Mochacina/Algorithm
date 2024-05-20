@@ -43,6 +43,5 @@ for _ in range(int(input())):
     
     for i in input(): keys.add(i)
     
-    while 1:
-        if not (q := bfs(q)): break
+    while q:=bfs(q): pass
     print(ans)
