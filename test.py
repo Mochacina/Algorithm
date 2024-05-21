@@ -19,3 +19,7 @@ l = []
 l += "hello"
 
 print(l)
+
+visited = [[[0]*(1<<6) for _ in range(2)] for _ in range(2)]
+
+print(visited)
