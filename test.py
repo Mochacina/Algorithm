@@ -6,7 +6,7 @@ print(n.is_integer())
 di = [(x-1,y-1) for x in range(3) for y in range(3) if x!=y and x+y!=2]
 print(di)
 
-l = [1]
+l = [1,2,3]
 print(l[:-1])
 
 l = []
@@ -27,3 +27,8 @@ print(visited)
 
 for i in range(n:=ord('A'), n+26, 1):
     print(chr(i))
+
+print(1<<2)
+
+for i in range(10):
+    print(((i==9)<<1) | (i==0)) 
