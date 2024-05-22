@@ -23,3 +23,7 @@ print(l)
 visited = [[[0]*(1<<6) for _ in range(2)] for _ in range(2)]
 
 print(visited)
+#print(ord('A'), chr(60))
+
+for i in range(n:=ord('A'), n+26, 1):
+    print(chr(i))

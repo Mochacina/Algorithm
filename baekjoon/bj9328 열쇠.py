@@ -7,24 +7,24 @@ def bfs(q):
     next_q = deque()
     while q:
         x,y = q.popleft()
-        pt = bMap[x][y]
-        if 65 <= ord(pt) < 91 and pt.lower() not in keys:
+        p = bMap[x][y]
+        if 'A' <= p <= 'Z' and p.lower() not in keys:
             next_q.append((x,y))
             continue
-        elif pt == '$': ans+=1
-        elif 97 <= ord(pt) < 123:
-            keys.add(pt)
+        elif p == '$': ans+=1
+        elif 'a' <= p <= 'z':
+            keys.add(p)
             q.extend(next_q)
             next_q.clear()
         for dx,dy in dir:
             nx,ny = x+dx, y+dy
             if 0 <= nx < h and 0 <= ny < w and not visited[nx][ny]:
-                if pt == '*': continue
+                if p == '*': continue
                 else:
                     q.append((nx,ny))
                     visited[nx][ny] = 1
     
-    return len(next_q)
+    return next_q
 
 for _ in range(int(input())):
     h,w = map(int, input().split())
