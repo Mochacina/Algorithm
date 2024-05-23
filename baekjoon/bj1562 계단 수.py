@@ -80,14 +80,14 @@ N=int(input())
 dp = [[[0]*4 for _ in range(10)]for _ in range(101)]
 
 for i in range(1,10):
-    dp[1][i][((i==9)*2)|(i==0)] = 1
+    dp[1][i][(i==9)*2] = 1
 for i in range(2, N+1):
     for j in range(10):
         for bit in range(4):
             if j == 0:
-                dp[i][j][bit | 1] += dp[i-1][j+1][bit]
+                dp[i][j][bit|1] += dp[i-1][j+1][bit]
             elif j == 9:
-                dp[i][j][bit | 2] += dp[i-1][j-1][bit]
+                dp[i][j][bit|2] += dp[i-1][j-1][bit]
             else:
                 dp[i][j][bit] += dp[i-1][j-1][bit] + dp[i-1][j+1][bit]
 
