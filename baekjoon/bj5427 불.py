@@ -29,5 +29,6 @@ for _ in ' '*int(input()):
         for j in range(w):
             if l[i][j] == '*': q.appendleft(('*',i,j))
             elif l[i][j] == '@': q.append(('@',i,j))
+            
     print(q)
     print(bfs(q))
