@@ -19,6 +19,7 @@ def bfs(q):
                     l[nx][ny] = type
                     q.append((type,nx,ny))
         print(l)
+        
     return "IMPOSSIBLE"
 
 for _ in ' '*int(input()):
