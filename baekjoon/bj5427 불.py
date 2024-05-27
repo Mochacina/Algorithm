@@ -2,34 +2,28 @@ import sys
 from collections import deque
 
 input = sys.stdin.readline
+dir = [(0,1),(1,0),(0,-1),(-1,0)]
 
 def bfs(q):
-    cnt = 0
     while q:
-        type, x, y = q.popleft()
-        print(type,x,y)
+        type, x, y, cnt = q.popleft()
         if type == '@':
             cnt+=1
-            if x in [0,h] or y in [0,w]:
+            if x in [0,h-1] or y in [0,w-1]:
                 return cnt
-        for dx,dy in [(1,0),(0,1),(-1,0),(0,-1)]:
+        for dx,dy in dir:
             nx,ny = x+dx,y+dy
-            if 0 <= nx < x and 0 <= ny < y:
-                if l[nx][ny] == '.':
-                    l[nx][ny] = type
-                    q.append((type,nx,ny))
-        print(l)
-        
+            if 0 <= nx < h and 0 <= ny < w and l[nx][ny] not in ['#','*',type]:
+                l[nx][ny] = type
+                q.append((type,nx,ny,cnt))
     return "IMPOSSIBLE"
 
 for _ in ' '*int(input()):
     w,h = map(int,input().split())
-    l = [[*input()]for _ in range(h)]
+    l = [[*input()][:-1]for _ in range(h)]
     q = deque()
     for i in range(h):
         for j in range(w):
-            if l[i][j] == '*': q.appendleft(('*',i,j))
-            elif l[i][j] == '@': q.append(('@',i,j))
-            
-    print(q)
+            if l[i][j] == '*': q.appendleft(('*',i,j,0))
+            elif l[i][j] == '@': q.append(('@',i,j,0))
     print(bfs(q))
