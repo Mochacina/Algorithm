@@ -13,6 +13,7 @@ def bfs(q):
             if 0 <= nx < r and 0 <= ny < c and l[nx][ny] not in ['#','F',type]:
                 l[nx][ny] = type
                 q.append((type,nx,ny,cnt))
+                
     return "IMPOSSIBLE"
 
 r,c = map(int,input().split())
