@@ -17,4 +17,4 @@ for i in range(n):
             l[j][k] = min(l[j][k], l[i][k]+l[j][i])
 
 for i in l:
-    print(*[(j if j!=inf else 0)for j in i])
+    print(*[j if j!=inf else 0 for j in i])
