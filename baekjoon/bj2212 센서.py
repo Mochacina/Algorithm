@@ -1,0 +1,5 @@
+n = int(input())
+k = int(input())
+sensor = sorted([*map(int,input().split())])
+array = sorted([sensor[i+1]-sensor[i] for i in range(0,n-1)])
+print(sum(array[:n-k]))
