@@ -7,7 +7,6 @@ def sum_num(inputs):
     return result
 
 arr = [input() for _ in range(n)]
-
 arr.sort(key = lambda x:(len(x), sum_num(x), x))
 for i in arr:
     print(i)
