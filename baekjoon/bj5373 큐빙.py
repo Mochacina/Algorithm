@@ -1,17 +1,6 @@
 from collections import deque
 
-"""
-         0  1  2 
-         7  8  3 
-         6  5  4 
-9  10 11 18 19 20 27 28 29 36 37 38
-16 17 12 25 26 21 34 35 30 43 44 39
-15 14 13 24 23 22 33 32 31 42 41 40
-         45 46 47
-         52 53 48
-         51 50 49
-"""
-
+r = range
 def cubing(d,v):
     l,l2 = dic[d],dic2[d]
     dq = deque([cube[i] for i in l])
@@ -31,20 +20,30 @@ dic = {
 }
 
 dic2 = {
-    'U':[*range(8)],
-    'D':[*range(45,53)],
-    'L':[*range(9,17)],
-    'R':[*range(27,35)],
-    'B':[*range(36,44)],
-    'F':[*range(18,26)]
+    'U':[*r(8)],
+    'D':[*r(45,53)],
+    'L':[*r(9,17)],
+    'R':[*r(27,35)],
+    'B':[*r(36,44)],
+    'F':[*r(18,26)]
 }
 
 for _ in range(int(input())):
     cube = list("wwwwwwwwwgggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyy")
     n = int(input())
-    l = [*input().split()]
-    for i in l:
-        d,v = i[0], [-1,1][i[1]=='+']
-        cubing(d,v)
+    for i in [*input().split()]:
+        cubing(i[0], [-1,1][i[1]=='+'])
     for i in [[0,1,2],[7,8,3],[6,5,4]]:
         print(''.join([cube[j] for j in i]))
+
+"""
+         0  1  2 
+         7  8  3 
+         6  5  4 
+9  10 11 18 19 20 27 28 29 36 37 38
+16 17 12 25 26 21 34 35 30 43 44 39
+15 14 13 24 23 22 33 32 31 42 41 40
+         45 46 47
+         52 53 48
+         51 50 49
+"""
