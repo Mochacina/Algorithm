@@ -29,10 +29,10 @@ dic2 = {
 }
 
 for _ in range(int(input())):
-    cube = list("wwwwwwwwwgggggggggrrrrrrrrrbbbbbbbbboooooooooyyyyyyyyy")
+    cube = list('w'*9+'g'*9+'r'*9+'b'*9+'o'*9+'y'*9)
     n = int(input())
     for i in [*input().split()]:
-        cubing(i[0], [-1,1][i[1]=='+'])
+        cubing(i[0],[-1,1][i[1]=='+'])
     for i in [[0,1,2],[7,8,3],[6,5,4]]:
         print(''.join([cube[j] for j in i]))
 
