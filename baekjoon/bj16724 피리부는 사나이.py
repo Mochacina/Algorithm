@@ -17,7 +17,6 @@ def dfs(x,y,idx):
 for i in range(n):
     for j in range(m):
         if v[i][j] == -1: dfs(i,j,i*m+j)
-
 print(cnt)
 
 # di = {'U':(-1,0),'D':(1,0),'L':(0,-1),'R':(0,1)}
