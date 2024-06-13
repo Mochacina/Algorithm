@@ -17,12 +17,18 @@
 #             for b in member: members[b] = 1
 #     print(n-sum(members))
 
+import sys
+sys.setrecursionlimit(10**6)
 i = input
-def dfs(n,m=[]):
+def dfs(n,m):
     v[n] = 1
     m.append(n)
     node = l[n]
-    dfs(node,m)
+    if v[node]:
+        if node in m:
+            return len(m[m.index(node):])
+        return 0
+    return dfs(node,m)
 
 for _ in ' '*int(i()):
     n = int(i())
@@ -31,4 +37,5 @@ for _ in ' '*int(i()):
     cnt = 0
     for a in range(1,n+1):
         if not v[a]:
-            print(dfs(a))
+            cnt += dfs(a,[])
+    print(n-cnt)
