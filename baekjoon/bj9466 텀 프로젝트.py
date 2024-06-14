@@ -25,9 +25,7 @@ def dfs(n,m):
     m.append(n)
     node = l[n]
     if v[node]:
-        if node in m:
-            return len(m[m.index(node):])
-        return 0
+        return len(m[m.index(node):]) if node in m else 0
     return dfs(node,m)
 
 for _ in ' '*int(i()):
