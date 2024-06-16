@@ -2,7 +2,6 @@ n = int(input())
 m = int(input())
 
 inf = float("inf")
-
 l = [[inf]*(n)for _ in range(n)]
 for i in range(n): l[i][i] = 0
 
