@@ -38,3 +38,8 @@ print([*"1 4 7 13 25 37 46 49 52 45 33 21".split(' ')])
 print([*range(10)])
 
 print(1e3)
+
+l = [1]*5
+print(l)
+l = [0,0]+l
+print(l)
