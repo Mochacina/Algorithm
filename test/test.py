@@ -36,3 +36,5 @@ for i in range(10):
 print([*"1 4 7 13 25 37 46 49 52 45 33 21".split(' ')])
 
 print([*range(10)])
+
+print(1e3)

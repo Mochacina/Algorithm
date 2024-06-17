@@ -14,7 +14,5 @@ a=[]
 while q:
  j,c = q.popleft()
  for k in l[j]:
-  if not v[k] and len(a)<2:
-   if k <= s:a.append(c+1)
-   else:v[k]+=1;q.append((k,c+1))
+  if not v[k] and len(a)<2:v[k]=1;a.append(c+1)if k <= s else q.append((k,c+1))
 print(n-sum(a,1))
