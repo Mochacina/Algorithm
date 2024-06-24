@@ -21,3 +21,5 @@ for i in range(-n,n):
 
 for i in board:
     print(*i)
+
+print(0xffffffff | 0xffffff00)

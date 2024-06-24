@@ -43,3 +43,6 @@ l = [1]*5
 print(l)
 l = [0,0]+l
 print(l)
+
+
+print(hex(0xffffffff | 0xffffff00))
