@@ -19,11 +19,10 @@ def find_friends(i):
                 w,v = w+1,v+candies[n_node]
                 vi[n_node] = 1
     l.append((w,v))
-#print(vi, l)
 for i in range(1,n+1):
     if not vi[i]: find_friends(i)
-ns = [0]*(k)
+dp = [0]*(k)
 for w,v in l:
     for j in range(k-1,w-1,-1):
-        ns[j]=max(ns[j],ns[j-w]+v)
-print(ns[-1])
+        dp[j]=max(dp[j],dp[j-w]+v)
+print(dp[-1])
