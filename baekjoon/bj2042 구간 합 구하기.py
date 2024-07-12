@@ -5,7 +5,7 @@ n,m,k = map(int,input().split())
 class SegTree():
     def __init__(self, data) -> None:
         self.n = len(data)
-        self.tree = [0]*(4*n)
+        self.tree = [0]*(4*self.n)
         self.data = data
         self.init(0,0,self.n-1)
     
