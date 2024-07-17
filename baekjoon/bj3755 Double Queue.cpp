@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-    map<int, int> m;
+    set<pair<int,int>> m;
     while (1) {
         int n;
         cin >> n;
@@ -12,12 +12,13 @@ int main(){
         if (n==1){
             int k,p;
             cin >> k >> p;
-            m.insert({k,p});
+            m.insert({p,k});
         }
         else if (n==2)
         {
             if (!m.empty()) {
                 auto it = m.begin();
+                printf("%d\n", it->second);
                 m.erase(it);
             }
         }
@@ -25,7 +26,8 @@ int main(){
         {
             if (!m.empty()) {
                 auto it = m.rbegin();
-                m.erase(next(it).base());
+                printf("%d\n", it->second);
+                m.erase(--m.end());
             }
         }
         
