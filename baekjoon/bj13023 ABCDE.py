@@ -11,13 +11,16 @@ def dfs(node):
     nodes = [(node,1)]
     while nodes:
         nd, cnt = nodes.pop()
+        print(nd, cnt)
         if cnt >= 5: exit(print(1))
         for i in graph[nd]:
             if not visited[i]:
+                visited[i] = 1
                 nodes.append((i,cnt+1))
 
 for i in range(n):
     visited = [0]*n
     visited[i] = 1
+    print(f"dfs: {i}")
     dfs(i)
 print(0)
