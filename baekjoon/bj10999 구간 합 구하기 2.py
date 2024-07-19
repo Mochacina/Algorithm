@@ -9,7 +9,8 @@ class SegTree():
         self.data = data
         self.init(0, 0, self.n - 1)
     
-    def init(self, node, start, end):
+    def init(self,
+             node, start, end):
         if start == end:
             self.tree[node] = self.data[start]
         else:
@@ -17,7 +18,8 @@ class SegTree():
             self.tree[node] = self.init(2 * node + 1, start, mid) + self.init(2 * node + 2, mid + 1, end)
         return self.tree[node]
 
-    def lazy_update(self, node, start, end):
+    def lazy_update(self,
+                    node, start, end):
         if self.lazy[node] != 0:
             self.tree[node] += (end - start + 1) * self.lazy[node]
             if start != end:
@@ -25,10 +27,12 @@ class SegTree():
                 self.lazy[node * 2 + 2] += self.lazy[node]
             self.lazy[node] = 0
     
-    def update_range(self, l, r, value):
+    def update_range(self,
+                    l, r, value):
         self._update_range(0, 0, self.n - 1, l, r, value)
     
-    def _update_range(self, node, start, end, l, r, value):
+    def _update_range(self,
+                    node, start, end, l, r, value):
         self.lazy_update(node, start, end)
 
         if start > r or end < l:

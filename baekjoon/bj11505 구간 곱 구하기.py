@@ -10,7 +10,8 @@ class SegTree():
         self.data = data
         self.init(1,0,self.n-1)
     
-    def init(self, node, start, end):
+    def init(self,
+             node, start, end):
         if start == end:
             self.tree[node] = self.data[start]
             return
@@ -18,17 +19,27 @@ class SegTree():
         mid = (start+end) // 2
         self.init(2*node,start,mid)
         self.init(2*node+1,mid+1,end)
-        self.tree[node] = self.tree[node*2] + self.tree[node*2+1]
+        self.tree[node] = self.tree[node*2] * self.tree[node*2+1]
         
-    def update_value(self, idx, value):
-        diff = value - self.data[idx]
+    def update_value(self,
+                     idx, value):
         self.data[idx] = value
-        self.update(1,0,self.n-1,idx,diff)
+        self.update(1,0,self.n-1,idx,value)
     
-    def update(self, node, start, end, idx, diff):
-        if idx < start or end < idx: return
-        self.tree[node] += diff
-        if start != end:
-            mid = (start+end) // 2
-            self.update(2*node,start,mid,idx,diff)
-            self.update(2*node+1,mid+1,end,idx,diff)
+    def update(self,
+               node, start, end, idx, value):
+        if start == end:
+            self.tree[node] = value
+            return self.tree[node]
+        
+        mid = (start+end) // 2
+        if start <= idx <= mid:
+            self.tree[node] = self.update(2*node,start,mid,idx,value) * self.tree[2*node+1]
+        else:
+            self.tree[node] = self.tree[2*node] * self.update(2*node+1,mid+1,end,idx,value)
+        return self.tree[node]
+    
+st = SegTree(l)
+print(st.tree)
+st.update_value(3, 6)
+print(st.tree)
