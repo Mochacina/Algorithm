@@ -3,5 +3,6 @@
     "files.associations": {
         "*.pc": "cpp",
         "ostream": "cpp"
-    }
+    },
+    "python.analysis.autoImportCompletions": true
 }
