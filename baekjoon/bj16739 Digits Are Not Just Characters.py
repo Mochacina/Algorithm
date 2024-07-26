@@ -6,10 +6,8 @@ def split_items(filename):
 def compare_items(item1, item2):
     if item1.isdigit() and item2.isdigit():
         return int(item1) - int(item2)
-    elif item1.isdigit():
-        return -1
-    elif item2.isdigit():
-        return 1
+    elif item1.isdigit(): return -1
+    elif item2.isdigit(): return 1
     else:
         return (item1 > item2) - (item1 < item2)
 
