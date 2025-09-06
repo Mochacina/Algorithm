@@ -30,6 +30,13 @@ for cost, customer in promos:
         # dp[i - customer] + cost는 "일단 (i-customer)명 모으고, 이번 홍보를 추가해서 i명을 만들자!"라는 뜻이지.
         if dp[i - customer] != float('inf'): # (i-customer)명을 모으는 방법이 존재할 때만 갱신
             dp[i] = min(dp[i], dp[i - customer] + cost)
+    print(dp)
+    
+# for cost, customer in promos:
+#     for i in range(c, c+101):
+#         if dp[i-customer] != float('inf'):
+#             dp[i] = min(dp[i], dp[i-customer] + cost)
+    
 
 # dp 테이블은 C명 이상일 때의 최소 비용들을 모두 계산해뒀어.
 # 우리가 원하는 건 '적어도' C명 이상을 모으는 최소 비용이니까,
