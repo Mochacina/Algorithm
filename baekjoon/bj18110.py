@@ -23,3 +23,7 @@ else:
     else:
         average = sum(trimmed_opinions) / len(trimmed_opinions)
         print(int(average + 0.5))
+        
+# n,*d=map(int,open(0))
+# u=(n*3+10)//20
+# print(int(sum(sorted(d)[u:n-u])/(n-u*2 or 1)+.5))
