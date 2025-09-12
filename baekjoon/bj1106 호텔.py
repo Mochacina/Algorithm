@@ -45,23 +45,3 @@ result = min(dp[c:])
 
 print(result)
 
-# import sys
-
-# input = sys.stdin.readline
-# c, n = map(int, input().split())
-# promos = []
-# for _ in range(n):
-#     cost, customer = map(int, input().split())
-#     promos.append((cost, customer))
-
-# dp = [float('inf')] * (c + 101)
-# dp[0] = 0
-
-# for cost, customer in promos:
-#     for i in range(customer, c + 101):
-#         if dp[i - customer] != float('inf'):
-#             dp[i] = min(dp[i], dp[i - customer] + cost)
-
-# result = min(dp[c:])
-
-# print(result)
