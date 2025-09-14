@@ -10,19 +10,19 @@ B = list(map(int,input().split()))
 
 sum = defaultdict(int)
 for i in range(n):
-    current_sum = 0
+    s_a = 0
     for j in range(i,n):
-        current_sum += A[j]
-        sum[current_sum] += 1
+        s_a += A[j]
+        sum[s_a] += 1
 
 ans = 0
 for i in range(m):
-    current_sum = 0
+    s_b = 0
     for j in range(i,m):
-        current_sum += B[j]
-        r_sum = T - current_sum
-        if r_sum in sum:
-            ans += sum[r_sum]
+        s_b += B[j]
+        r = T - s_b
+        if r in sum:
+            ans += sum[r]
 
 print(ans)
 
