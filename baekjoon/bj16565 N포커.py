@@ -13,11 +13,9 @@ N = int(sys.stdin.readline().strip())
 ans = 0
 maxk = min(13,N//4)
 for k in range(1,maxk+1):
-    r = 52 - 4*k
-    n = N - 4*k
     n1 = C[13][k]
-    n2 = C[r][n] if 0 <= n <= r else 0
-    term = (n1 * n2) % mod
+    n2 = C[52-4*k][N-4*k]
+    term = (n1*n2) % mod
 
     ans = ((ans + term) if (k%2)==1 else (ans - term)) % mod
 
