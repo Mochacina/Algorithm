@@ -47,29 +47,26 @@
 
 import sys
 
-n = int(sys.stdin.readline())
-solutions = list(map(int, sys.stdin.readline().split()))
-
-solutions.sort()
+input = sys.stdin.readline
+n = int(input())
+solutions = sorted(list(map(int,input().split())))
 min_sum = float('inf')
 final_answer = []
 
-for i in range(n - 2):
-    fixed_solution = solutions[i]
+for i in range(n-2):
+    solution = solutions[i]
+    l = i+1
+    r = n-1
     
-    left = i + 1
-    right = n - 1
-
-    while left < right:
-        current_sum = fixed_solution + solutions[left] + solutions[right]
-
+    while l < r:
+        current_sum = solution + solutions[l] + solutions[r]
+        
         if abs(current_sum) < min_sum:
             min_sum = abs(current_sum)
-            final_answer = [fixed_solution, solutions[left], solutions[right]]
-
-        if current_sum < 0:
-            left += 1
-        elif current_sum > 0:
-            right -= 1
-        else:exit(print(*final_answer))
-print(*final_answer)
+            ans = [solution, solutions[l], solutions[r]]
+        
+        if current_sum < 0: l += 1
+        elif current_sum > 0: r -= 1
+        else: exit(print(*ans))
+        
+print(*ans)
