@@ -17,7 +17,7 @@
 # def bfs(q):
 #     hunt_l = []
 #     time = 1
-#     # Àâ¾Æ¸ÔÀ» ´ë»óÀÌ ¾ø°í ´ÙÀ½ ¹æ¹®ÇÒ °ø°£ÀÌ ÀÖÀ¸¸é °è¼Ó µ¹¾Æ°¨
+#     # ìž¡ì•„ë¨¹ì„ ëŒ€ìƒì´ ì—†ê³  ë‹¤ìŒ ë°©ë¬¸í•  ê³µê°„ì´ ìžˆìœ¼ë©´ ê³„ì† ëŒì•„ê°
 #     while not hunt_l and q:
 #         next_node = deque()
 #         while q:
@@ -25,18 +25,18 @@
 #             for dx,dy in di:
 #                 nx,ny = x+dx,y+dy
 #                 if 0 <= nx < n and 0 <= ny < n and l[nx][ny] <= shark_size:
-#                     # Àâ¾Æ¸ÔÀ» ¼ö ÀÖ´Â ¹°°í±â ÀÖ´Â °æ¿ì ¹«Á¶°Ç ¸ÕÀú Àâ¾Æ¸ÔÀ½
+#                     # ìž¡ì•„ë¨¹ì„ ìˆ˜ ìžˆëŠ” ë¬¼ê³ ê¸° ìžˆëŠ” ê²½ìš° ë¬´ì¡°ê±´ ë¨¼ì € ìž¡ì•„ë¨¹ìŒ
 #                     if l[nx][ny] and l[nx][ny] < shark_size:
 #                         hunt_l.append([nx,ny])
 #                         v[nx][ny] = time
-#                     # Àâ¾Æ¸ÔÀ» ¼ö ÀÖ´Â ¹°°í±â ¾ø´Â °æ¿ì, ¹æ¹®ÇÏÁö ¾ÊÀº ºó °ø°£ ÀÌµ¿
+#                     # ìž¡ì•„ë¨¹ì„ ìˆ˜ ìžˆëŠ” ë¬¼ê³ ê¸° ì—†ëŠ” ê²½ìš°, ë°©ë¬¸í•˜ì§€ ì•Šì€ ë¹ˆ ê³µê°„ ì´ë™
 #                     elif not hunt_l and (not l[nx][ny] or l[nx][ny] == shark_size) and not v[nx][ny]:
 #                         next_node.append([nx,ny])
 #                         v[nx][ny] = time
 #         time += 1
 #         q = next_node
 #     if hunt_l:
-#         # À§¿¡ ÀÖ´Â³ð ¿ÞÂÊ¿¡ ÀÖ´Â³ð ¿ì¼± Àâ¾Æ¸ÔÀ½
+#         # ìœ„ì— ìžˆëŠ”ë†ˆ ì™¼ìª½ì— ìžˆëŠ”ë†ˆ ìš°ì„  ìž¡ì•„ë¨¹ìŒ
 #         hunt_l.sort()
 #         return hunt_l[0], time-1
 #     else:
@@ -131,7 +131,7 @@ for x in range(n):
 def bfs(q):
     hunt_l = []
     time = 0
-    v = [[0]*n for _ in range(n)]  # BFS¸¦ ½ÇÇàÇÒ ¶§¸¸ ÃÊ±âÈ­
+    v = [[0]*n for _ in range(n)]  # BFSë¥¼ ì‹¤í–‰í•  ë•Œë§Œ ì´ˆê¸°í™”
     while not hunt_l and q:
         next_node = deque()
         while q:
