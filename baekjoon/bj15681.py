@@ -3,42 +3,42 @@ from collections import deque
 
 input = sys.stdin.readline
 
-N, R, Q = map(int, input().split())
+n,r,Q = map(int,input().split())
 
-# 1. 인접 리스트 생성 (양방향)
-adj = [[] for _ in range(N + 1)]
-for _ in range(N - 1):
-    u, v = map(int, input().split())
+adj = [[] for _ in range(n+1)]
+for _ in range(n-1):
+    u,v = map(int,input().split())
     adj[u].append(v)
     adj[v].append(u)
 
-# 2. BFS로 트리 구조 만들기
-tree = [[] for _ in range(N + 1)]
-visited = [False] * (N + 1)
-order = []  # BFS 순서 저장
+#print("adj:", adj)
 
-q = deque([R])
-visited[R] = True
+tree = [[] for _ in range(n+1)]
+visited = [0]*(n+1)
+order = []
+
+q = deque([r])
+visited[r] = 1
 
 while q:
-    cur = q.popleft()
-    order.append(cur)
-    for nxt in adj[cur]:
+    node = q.popleft()
+    order.append(node)
+    for nxt in adj[node]:
         if not visited[nxt]:
-            visited[nxt] = True
-            tree[cur].append(nxt)
+            visited[nxt] = 1
+            tree[node].append(nxt)
             q.append(nxt)
 
-# 3. 서브트리 크기 계산 (Bottom-up)
-subtree_size = [0] * (N + 1)
+#print("tree:", tree)
 
-for u in reversed(order):  # 리프부터 처리
-    size = 1  # 자기 자신 포함
+subtree = [0]*(n+1)
+
+for u in reversed(order):
+    size = 1
     for v in tree[u]:
-        size += subtree_size[v]
-    subtree_size[u] = size
+        size += subtree[v]
+    subtree[u] = size
 
-# 4. 쿼리 처리
 for _ in range(Q):
     u = int(input())
-    print(subtree_size[u])
+    print(subtree[u])
