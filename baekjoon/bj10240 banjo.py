@@ -138,3 +138,56 @@ while sum(data:=[*map(int,input().split())]):
     at = 0
     result = solve_banjo(xA, yA, xB, yB, xC, yC, r, t)
     print(f"{result:.2f}")
+
+# short code version
+# from math import*
+# E=1e-9
+# P=pi*2
+# S=3
+# def g(a,b,c):return acos((a*a+b*b-c*c)/(2*a*b))
+# def l(a,b,t):return sqrt(a*a+b*b-2*a*b*cos(t))
+# def p(a):
+#  while a<0:a+=P
+#  while a>=P:a-=P
+#  return a
+# def n(a):
+#  a=p(a)
+#  return P-a if a>pi else a
+# def L(a):return r*a if t==0else int(a/at)*t+l(r,r,a-int(a/at)*at)
+# def m(o,h,x,f):
+#  while abs(h-o)>E:
+#   i=(h-o)/S;v=1e9;w=0
+#   for j in range(S+1):
+#    y=o+j*i;u=f(x,y)
+#    if u<v:w=j;v=u
+#   if w<S-1:h=o+(w+1)*i
+#   if w>1:o+=(w-1)*i
+#  return v
+# while 1:
+#  d=[*map(int,input().split())]
+#  if sum(d)==0:break
+#  x,y,X,Y,u,v,r,t=d
+#  a=hypot(X-x,Y-y);c=hypot(u-x,v-y);b=hypot(u-X,v-Y);M=-1
+#  if abs(a+b-c)<E or abs(a+c-b)<E:M=a
+#  elif abs(c+b-a)<E:M=a if r+r<t else M
+#  else:
+#   z=g(a,c,b);j=sin(z)*c;o=sqrt(c*c-j*j);q=sqrt(b*b-j*j)
+#   if j>=r or o>a or q>a:M=a
+#   else:
+#    w=2*sqrt(r*r-j*j)
+#    if w<t:M=a
+#  if M<0:
+#   at=g(r,r,t)
+#   A=p(atan2(y-v,x-u));B=p(atan2(Y-v,X-u))
+#   o=A;i=acos(r/c);U=p(o+i);D=p(o-i);F=d=U if n(B-U)<n(B-D)else D
+#   if p(d-o)>pi:o,d=d,o
+#   if d>o and d-o>pi:o+=P
+#   if d<o and o-d>pi:d+=P
+#   f=B;i=acos(r/b);U=p(f+i);D=p(f-i);h=U if n(F-U)<n(F-D)else D
+#   if p(h-f)>pi:f,h=h,f
+#   if h>f and h-f>pi:f+=P
+#   if h<f and f-h>pi:h+=P
+#   def G(x,y):return l(r,c,n(x-A))+l(r,b,n(y-B))+L(n(y-x))
+#   def H(x,y):return m(f,h,y,G)
+#   M=m(o,d,0,H)
+#  print(f"{M:.2f}")
