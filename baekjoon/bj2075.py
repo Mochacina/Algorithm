@@ -10,3 +10,9 @@ for _ in range(n):
         else:
             if i > hq[0]: heapq.heapreplace(hq,i)
 print(hq[0])
+
+# N = int(input())
+# l = []
+# for _ in range(N):
+#     l = sorted(l + input().split(), key=int)[-N:]
+# print(l[0])
