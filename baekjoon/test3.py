@@ -1,3 +1,9 @@
-l1 = sum(map(int,input().split()))
-l2 = sum(map(int,input().split()))
-print(max(l1,l2))
+n=int(input())
+m=int(input())
+l=[m]
+if n >= 5: l.append(m-500)
+if n >= 10: l.append(int(m*0.9))
+if n >= 15: l.append(m-2000)
+if n >= 20: l.append(int(m*0.75))
+s = min(l)
+print(s if s >= 0 else 0)
