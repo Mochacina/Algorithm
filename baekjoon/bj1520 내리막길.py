@@ -1,23 +1,52 @@
-m,n = map(int,input().split())
-l = [[*map(int,input().split())]for _ in range(m)]
-dp = [[-1]*n for _ in range(m)]
-di = [(0,1),(1,0),(0,-1),(-1,0)]
+m, n = map(int, input().split())
+board = [list(map(int, input().split())) for _ in range(m)]
 
-def dfs(x,y):
-    if x==m-1 and y==n-1: return 1
+dp = [[0]*n for _ in range(m)]
+dp[0][0] = 1
+
+cells = []
+for i in range(m):
+    for j in range(n):
+        cells.append((board[i][j], i, j))
+
+cells.sort(reverse=True)  # 높이 내림차순
+
+dirs = [(0,1),(1,0),(0,-1),(-1,0)]
+
+for h, x, y in cells:
+    if dp[x][y] == 0:
+        continue
+    for dx, dy in dirs:
+        nx, ny = x+dx, y+dy
+        if 0 <= nx < m and 0 <= ny < n:
+            if board[nx][ny] < h:
+                dp[nx][ny] += dp[x][y]
+
+print(dp[m-1][n-1])
+
+# m,n = map(int,input().split())
+# l = [[*map(int,input().split())]for _ in range(m)]
+# dp = [[-1]*n for _ in range(m)]
+# di = [(0,1),(1,0),(0,-1),(-1,0)]
+
+# def dfs(x,y):
+#     if x==m-1 and y==n-1: return 1
     
-    if dp[x][y] != -1: return dp[x][y]
-    dp[x][y] = 0
+#     if dp[x][y] != -1: return dp[x][y]
+#     dp[x][y] = 0
     
-    for dx,dy in di:
-        nx,ny = x+dx,y+dy
-        if 0<=nx<m and 0<=ny<n:
-            if l[nx][ny] < l[x][y]:
-                dp[x][y] += dfs(nx,ny)
+#     for dx,dy in di:
+#         nx,ny = x+dx,y+dy
+#         if 0<=nx<m and 0<=ny<n:
+#             if l[nx][ny] < l[x][y]:
+#                 dp[x][y] += dfs(nx,ny)
     
-    return dp[x][y]
+#     return dp[x][y]
     
-print(dfs(0,0))
+# print(dfs(0,0))
+
+
+
 # for i in dp:
 #     print(*i)
 
