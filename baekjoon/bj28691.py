@@ -3,6 +3,6 @@ d={
     'W':'WiCys',
     'C':'CyKor',
     'A':'AlKor',
-    '$':'$clear',
+    '$':'$clear'
 }
 print(d[input()])
